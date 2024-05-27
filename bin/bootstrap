@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -eo pipefail
+
+if ! command -v createdb &> /dev/null
+then
+    echo "Error: createdb command not found. Please install PostgreSQL before running this script."
+    exit 1
+fi
+
+echo "Creating the database..."
+createdb -O postgres "dev-$APP_NAME"
+
+echo " "
+echo " "
+echo "⚠️⚠️⚠️ THIS IS FOR DEVELOPMENT USE ONLY!!! DO NOT USE THIS IN PROD!!! ⚠️⚠️⚠️"
+echo "Database: dev-$APP_NAME"
+echo " "
+echo " "

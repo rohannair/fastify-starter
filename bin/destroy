@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eo pipefail
+
+if ! command -v dropdb &> /dev/null
+then
+    echo "Error: dropdb command not found. Please install PostgreSQL before running this script."
+    exit 1
+fi
+
+dropdb "$APP_NAME"

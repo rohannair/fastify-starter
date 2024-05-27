@@ -1,0 +1,87 @@
+# Node.js specific
+node_modules/
+.pnp
+.pnp.js
+.pnp.cjs
+
+# pnpm specific
+pnpm-lock.yaml
+.pnpm-store
+
+# Build outputs
+dist/
+build/
+out/
+
+# Logs
+logs
+*.log
+*.log.*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+lib-cov
+coverage/
+
+# Environment variables
+.env
+.env.test
+.env.production
+.env.development
+
+# IDE and editor specific
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# MacOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# MacOS directory metadata
+__MACOSX/
+
+# Thumbnail cache files
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Fastify specific (if any custom generated files)
+fastify-autoload/
+
+# Ignore the following paths
+public/
+tmp/
+temp/
+
+# Other custom ignore patterns
+*.bak
+*.backup
+*.swp
+Thumbs.db
