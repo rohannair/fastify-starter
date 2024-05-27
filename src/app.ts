@@ -1,18 +1,18 @@
 import traps from '@dnlup/fastify-traps'
-import sensible from '@fastify/sensible'
 import cors from '@fastify/cors'
+import sensible from '@fastify/sensible'
+import { Kita } from '@kitajs/runtime'
 import Fastify from 'fastify'
 import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
+
+import { ZodError } from 'zod'
+import { env } from './env'
+import { envToLogger } from './lib/logger'
 import routes from './modules'
 import { swaggerPlugin } from './plugins/swagger'
-
-import { envToLogger } from './lib/logger'
-import { formatUptime } from './lib/utils/time'
-import { type Environments, env } from './env'
-import { ZodError } from 'zod'
 
 declare module 'fastify' {
   interface FastifyRequest {
@@ -38,12 +38,7 @@ export async function createApp() {
     .register(sensible)
     .register(cors)
     .register(swaggerPlugin)
-    .get('/', async () => {
-      return { ok: true, uptime: formatUptime(process.uptime()) }
-    })
-    .get('/health', async () => {
-      return { ok: true, uptime: formatUptime(process.uptime()) }
-    })
+    .register(Kita)
     .get('/favicon.ico', async (_req, reply) => {
       return reply.code(404).send()
     })
