@@ -1,7 +1,8 @@
 import 'dotenv/config'
+import './prelude'
 
-import { env } from './env'
 import { createApp } from './app'
+import { env } from './env'
 
 async function main() {
   try {

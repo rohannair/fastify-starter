@@ -2,7 +2,12 @@
   "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
   "files": {
     "ignoreUnknown": true,
-    "ignore": ["app/graphql-env.d.ts"]
+    "ignore": [
+      "pnpm-lock.yaml",
+      "dist/**",
+      "node_modules/**",
+      "app/graphql-env.d.ts"
+    ]
   },
   "organizeImports": {
     "enabled": true
@@ -11,8 +16,17 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "style": {
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "off",
+        "useDefaultParameterLast": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noConsoleLog": "error"
+      },
       "correctness": {
-        "noUnusedVariables": "error"
+        "noUnusedVariables": "warn"
       }
     }
   },

@@ -38,7 +38,6 @@ coverage/
 
 # IDE and editor specific
 .idea/
-.vscode/
 *.suo
 *.ntvs*
 *.njsproj

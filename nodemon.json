@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["node_modules"],
+  "watch": ["src/routes"],
+  "ext": "ts,json",
+  "exec": "pnpm run build:kita"
+}
