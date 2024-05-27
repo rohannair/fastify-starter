@@ -30,7 +30,7 @@ const loggerConfig: LoggerConfig = {
   },
 }
 
-export const envToLogger = (env: Environments) => {
+export const envToLoggerConfig = (env: Environments) => {
   switch (env) {
     case 'test':
       return false

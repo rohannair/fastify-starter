@@ -3,16 +3,9 @@ import cors from '@fastify/cors'
 import sensible from '@fastify/sensible'
 import { Kita } from '@kitajs/runtime'
 import Fastify from 'fastify'
-import {
-  serializerCompiler,
-  validatorCompiler,
-} from 'fastify-type-provider-zod'
-
 import { ZodError } from 'zod'
 import { env } from './env'
-import { envToLogger } from './lib/logger'
-import routes from './modules'
-import { swaggerPlugin } from './plugins/swagger'
+import { envToLoggerConfig } from './lib/logger'
 
 declare module 'fastify' {
   interface FastifyRequest {
@@ -28,22 +21,16 @@ declare module 'fastify' {
 export async function createApp() {
   const app = Fastify({
     // @ts-ignore
-    logger: envToLogger(env.NODE_ENV),
+    logger: envToLoggerConfig(env.NODE_ENV),
   })
 
   app
-    .setValidatorCompiler(validatorCompiler)
-    .setSerializerCompiler(serializerCompiler)
     .register(traps)
     .register(sensible)
     .register(cors)
-    .register(swaggerPlugin)
     .register(Kita)
     .get('/favicon.ico', async (_req, reply) => {
       return reply.code(404).send()
-    })
-    .register(routes, {
-      prefix: '/api/v1',
     })
     .setErrorHandler((error, _request, reply) => {
       if (error instanceof ZodError) {
